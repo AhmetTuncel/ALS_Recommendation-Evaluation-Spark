@@ -4,10 +4,22 @@ from pyspark.sql import HiveContext
 from pyspark.mllib.evaluation import RankingMetrics
 import os
 
+#pyspark need to enter the following command before you begin to run it:
+#export PYSPARK_DRIVER_PYTHON=/usr/bin/python
 
+"""
+# For the Spark app
+sc = ""
+if __name__ == "__main__":
+   os.environ['SPARK_HOME'] = "C:\spark"
+   sc = SparkContext()
+"""
+
+#Using HiveContext, you can create and find tables in the HiveMetaStore and write queries on it using HiveQL.Then createing an object that called SqlContext 
 
 sqlContext = HiveContext(sc)
 
+#Avoid info log level 
 sc.setLogLevel("WARN")
 
 genuine_user_max_product = 100
