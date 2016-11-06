@@ -22,9 +22,19 @@ sqlContext = HiveContext(sc)
 #Avoid info log level 
 sc.setLogLevel("WARN")
 
+#Parameters to be used throughout the program
+
+#In the begining about these parameters set by our self-intuitive.
+#To optimal parameters you have to use like grid-search algorithm 
+
+#Baseline params: 100, 3000, 75, 1.0, 40.0
+
+#If a user has bought more than this number, you filter all input data of the user. (for my case this value is 100)
 genuine_user_max_product = 100
 
+#If a product taken by singular users you filter all input data (for my case this value 3000)
 recommendable_product_max_user = 3000
+
 
 als_rank = [75, 100, 150]
 
