@@ -4,8 +4,8 @@ from pyspark.sql import HiveContext
 from pyspark.mllib.evaluation import RankingMetrics
 import os
 
-#pyspark need to enter the following command before you begin to run it:
-#export PYSPARK_DRIVER_PYTHON=/usr/bin/python
+# pyspark need to enter the following command before you begin to run it:
+# export PYSPARK_DRIVER_PYTHON=/usr/bin/python
 
 """
 # For the Spark app
@@ -15,30 +15,34 @@ if __name__ == "__main__":
    sc = SparkContext()
 """
 
-#Using HiveContext, you can create and find tables in the HiveMetaStore and write queries on it using HiveQL.Then createing an object that called SqlContext 
+# Using HiveContext, you can create and find tables in the HiveMetaStore and write queries on it using HiveQL.Then createing an object that called SqlContext 
 
 sqlContext = HiveContext(sc)
 
-#Avoid info log level 
+# Avoid info log level 
 sc.setLogLevel("WARN")
 
-#Parameters to be used throughout the program
+# Parameters to be used throughout the program
 
-#In the begining about these parameters set by our self-intuitive.
-#To optimal parameters you have to use like grid-search algorithm 
+# In the begining about these parameters set by our self-intuitive.
+# To optimal parameters you have to use like grid-search algorithm 
 
-#Baseline params: 100, 3000, 75, 1.0, 40.0
+# Baseline params: 100, 3000, 75, 1.0, 40.0
 
-#If a user has bought more than this number, you filter all input data of the user. (for my case this value is 100)
+# If a user has bought more than this number, you filter all input data of the user. (for my case this value is 100)
 genuine_user_max_product = 100
 
-#If a product taken by singular users you filter all input data (for my case this value 3000)
+# If a product taken by singular users you filter all input data (for my case this value 3000)
 recommendable_product_max_user = 3000
 
+# We think about how many hidden factors (tastes) are in the model.
 
 als_rank = [75, 100, 150]
 
+# How many iterations in martix factorization
 als_iterations = 10
+
+# als_lambda is overfitting (regularization) parameter
 
 als_lambda = [10.0, 1.0, 0.01]
 
