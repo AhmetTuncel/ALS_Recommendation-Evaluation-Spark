@@ -50,7 +50,7 @@ als_alpha = [40.0, 10.0, 1.0, 0.1, 0.01]
 
 num_recommend_item_per_user = 5
 
-raw_data_under_partitioned = sc.textFile("/user/hive/warehouse/InternetSalesSources")\
+raw_data_under_partitioned = sc.textFile("/user/clouderaadmin/hdfs/InternetSalesSources")\
    .map(lambda x: x.split(";"))
 
 partitionCount = 2 * 3 * (8 - 1)
